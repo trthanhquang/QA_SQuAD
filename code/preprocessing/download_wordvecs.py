@@ -28,14 +28,16 @@ def setup_args():
 def main():
     args = setup_args()
     glove_base_url = "http://nlp.stanford.edu/data/"
-    glove_filename = "glove.6B.zip"
+    #glove_filename = "glove.6B.zip"
+    glove_filename = "glove.42B.300d.zip"
 
     print (("\nDownloading wordvecs to {}".format(args.download_dir)))
 
     if not os.path.exists(args.download_dir):
         os.makedirs(args.download_dir)
 
-    maybe_download(glove_base_url, glove_filename, args.download_dir, 862182613)
+    #maybe_download(glove_base_url, glove_filename, args.download_dir, 862182613)
+    maybe_download(glove_base_url, glove_filename, args.download_dir)
     glove_zip_ref = zipfile.ZipFile(os.path.join(args.download_dir, glove_filename), 'r')
 
     glove_zip_ref.extractall(args.download_dir)
